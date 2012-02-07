@@ -23,7 +23,7 @@ enabled=1
 gpgcheck=1
 
 [puppetlabs-deps]
-name=Puppet Labs Dependencies $releasever - $basearch 
+name=Puppet Labs Dependencies $releasever - $basearch
 baseurl=http://yum.puppetlabs.com/el/$releasever/dependencies/$basearch
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs
 enabled=1
