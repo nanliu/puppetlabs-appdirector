@@ -5,7 +5,7 @@ class appdirector (
   $provider = 'gem',
   # not guaranteed to be reliable:
   $confdir  = inline_template("<%= Puppet[:confdir] %>"),
-  $mod_path = inline_template("<%= Puppet[:modulepath].split[':'].first %>")
+  $mod_path = inline_template("<%= Puppet[:modulepath].split(':').first %>")
 ) {
 
   package { 'hiera':
