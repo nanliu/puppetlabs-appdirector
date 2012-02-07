@@ -1,0 +1,5 @@
+---
+:backend: - puppet
+
+:puppet:
+    :datasource: data
