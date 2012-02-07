@@ -2,7 +2,10 @@
 #
 #
 class appdirector (
-  $provider = 'gem'
+  $provider = 'gem',
+  # not guaranteed to be reliable:
+  $confdir  = inline_template("<%= Puppet[:confdir] %>"),
+  $mod_path = inline_template("<%= Puppet[:modulepath].split[':'].first %>")
 ) {
 
   package { 'hiera':
@@ -15,9 +18,6 @@ class appdirector (
     provider => $provider,
   }
 
-  # not dependable:
-  $confdir    = inline_template("<%= Puppet[:confdir] %>")
-  $modulepath = inline_template("<%= Puppet[:modulepath].to_s.split[':'].first %>")
 
   file { "${confdir}/hiera.yaml":
     owner  => 'puppet',
@@ -32,14 +32,14 @@ class appdirector (
 
   exec { 'vcsrepo':
     command => 'git clone git://github.com/puppetlabs/puppet-vcsrepo vcsrepo',
-    cwd     => $modulepath,
-    creates => "${modulepath}/vcsrepo",
+    cwd     => $mod_path,
+    creates => "${mod_path}/vcsrepo",
   }
 
   exec { 'hiera-puppet':
     command => 'git clone git://github.com/puppetlabs/hiera-puppet',
-    cwd     => $modulepath,
-    creates => "${modulepath}/hiera-puppet",
+    cwd     => $mod_path,
+    creates => "${mod_path}/hiera-puppet",
   }
 
 }
