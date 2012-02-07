@@ -12,7 +12,7 @@ gpgcheck=1
 gpgkey=http://centos.karan.org/RPM-GPG-KEY-karan.org.txt
 ' > /etc/yum.repos.d/kbsingh-CentOS-Ruby.repo
 
-yum install -y ruby
+yum install -y ruby rubygems
 
 # Installs dependencies and Puppet
 printf %s '[puppetlabs-products]
