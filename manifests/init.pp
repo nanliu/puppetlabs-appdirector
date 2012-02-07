@@ -17,7 +17,7 @@ class appdirector (
 
   # not dependable:
   $confdir    = inline_template("<%= Puppet[:confdir] %>")
-  $modulepath = inline_template("<%= Puppet[:modulepath] %>")
+  $modulepath = inline_template("<%= Puppet[:modulepath].split[':'].first %>")
 
   file { "${confdir}/hiera.yaml":
     owner  => 'puppet',
