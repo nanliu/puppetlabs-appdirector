@@ -46,3 +46,7 @@ gpgcheck=1
 ' > /etc/yum.repos.d/puppetlabs.repo
 
 yum install -y facter puppet
+
+# Installs git
+rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-4.noarch.rpm
+yum install git
