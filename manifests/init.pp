@@ -17,7 +17,7 @@ class appdirector (
 
   $puppet_confdir = inline_template("<%= Puppet[:confdir] %>")
 
-  file { '${puppet_confdir}/hiera.yaml':
+  file { "${puppet_confdir}/hiera.yaml":
     owner  => 'puppet',
     group  => 'puppet',
     mode   => '0644',
