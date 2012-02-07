@@ -18,21 +18,21 @@ yum install -y ruby
 printf %s '[puppetlabs-products]
 name=Puppet Labs Products $releasever - $basearch
 baseurl=http://yum.puppetlabs.com/el/$releasever/products/$basearch
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs
+gpgkey=http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs
 enabled=1
 gpgcheck=1
 
 [puppetlabs-deps]
 name=Puppet Labs Dependencies $releasever - $basearch
 baseurl=http://yum.puppetlabs.com/el/$releasever/dependencies/$basearch
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs
+gpgkey=http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs
 enabled=1
 gpgcheck=1
 
 [puppetlabs-products-source]
 name=Puppet Labs Products $releasever - $basearch - Source
 baseurl=http://yum.puppetlabs.com/el/$releasever/products/SRPMS
-gpgkey=file:///yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs
+gpgkey=http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs
 failovermethod=priority
 enabled=0
 gpgcheck=1
@@ -40,7 +40,7 @@ gpgcheck=1
 [puppetlabs-deps-source]
 name=Puppet Labs Source Dependencies $releasever - $basearch - Source
 baseurl=http://yum.puppetlabs.com/el/$releasever/dependencies/SRPMS
-gpgkey=file:///yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs
+gpgkey=http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs
 enabled=0
 gpgcheck=1
 ' > /etc/yum.repos.d/puppetlabs.repo
