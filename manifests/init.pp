@@ -13,27 +13,16 @@ class appdirector (
     provider => $provider,
   }
 
-  package { 'hiera-puppet':
-    ensure   => present,
-    provider => $provider,
-  }
-
-
   file { "${confdir}/hiera.yaml":
     owner  => 'puppet',
     group  => 'puppet',
     mode   => '0644',
     source => 'puppet:///modules/appdirector/hiera.yaml',
+    replace => false,
   }
 
   Exec {
     path => '/usr/local/bin:/usr/bin:/bin',
-  }
-
-  exec { 'vcsrepo':
-    command => 'git clone git://github.com/puppetlabs/puppet-vcsrepo vcsrepo',
-    cwd     => $mod_path,
-    creates => "${mod_path}/vcsrepo",
   }
 
   exec { 'hiera-puppet':
