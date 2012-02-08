@@ -13,6 +13,11 @@ class appdirector (
     provider => $provider,
   }
 
+  package { 'hiera-puppet':
+    ensure   => present,
+    provider => $provider,
+  }
+
   file { "${confdir}/hiera.yaml":
     owner  => 'puppet',
     group  => 'puppet',
@@ -21,13 +26,10 @@ class appdirector (
     replace => false,
   }
 
-  Exec {
-    path => '/usr/local/bin:/usr/bin:/bin',
-  }
-
   exec { 'hiera-puppet':
     command => 'git clone git://github.com/puppetlabs/hiera-puppet',
     cwd     => $mod_path,
+    path    => '/usr/local/bin:/usr/bin:/bin',
     creates => "${mod_path}/hiera-puppet",
   }
 
