@@ -1,0 +1,18 @@
+#!/bin/bash
+
+. $global_conf
+
+export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+set -u
+set -e
+
+puppet module install <%= "#{@options[:namespace]}/#{@module_name}" %>
+
+cat > /tmp/<%= @class_name.gsub('::','_') %>.pp <<EOF
+class { '<%= @puppet_class[:name] %>':
+<% @puppet_class[:param].each { |p| %> <%= p %> => $<%= p %>,
+<% } %>
+}
+EOF
+puppet apply --verbose -e /tmp/<%= @class_name.gsub('::','_') %>.pp
