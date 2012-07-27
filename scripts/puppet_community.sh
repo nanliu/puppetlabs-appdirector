@@ -87,3 +87,4 @@ else
 fi
 
 install_puppet
+mkdir /etc/puppet/modules
