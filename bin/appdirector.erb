@@ -15,4 +15,4 @@ class { '<%= @puppet_class[:name] %>':
 <% } %>
 }
 EOF
-puppet apply --verbose -e /tmp/<%= @class_name.gsub('::','_') %>.pp
+puppet apply --verbose /tmp/<%= @class_name.gsub('::','_') %>.pp
