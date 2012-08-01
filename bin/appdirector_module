@@ -1,0 +1,73 @@
+#!/usr/bin/env ruby
+
+require 'pp'
+require 'erb'
+require 'pathname'
+require 'puppet'
+require 'puppet/face'
+
+def opts
+  opts_parser = OptionParser.new do |opts|
+    opts.banner = "Usage: #{__FILE__} [options] [class_name]"
+    opts.separator ""
+    opts.separator "Options:"
+
+    @options = Hash.new
+    @options[:namespace] = 'puppetlabs'
+    opts.on('-v', '--verbose', 'Enable verbose output.')                            { @options[:verbose]   = true }
+    opts.on('-m', '--modulepath', 'Search puppet modulepath.')                      { |val| Puppet[:modulepath] = val }
+#    opts.on('-a', '--analyze', 'Analyze module and provide class and define type.') { @options[:analyze]   = true }
+    opts.on('-n', '--namespace', 'The module user namespace on Forge.')             { |val| @options[:namespace] = val }
+  end
+end
+
+def parse_options!(args=ARGV.dup)
+  @args = opts.order!(args)
+end
+
+def parse_module!
+  raise Exception, 'missing Puppet class name' if @args.empty?
+  @class_name  = @args.shift
+  @module_name = @class_name.split('::').first
+  @forge_name  = forge_name(@module_name)
+end
+
+def find(name, type=nil)
+  type ||= :hostclass
+  Puppet::Face[:resource_type,:current].search('*').find_all{ |x| x.type==type and x.name == name }
+end
+
+def forge_name(module_name)
+  modules = Puppet::Face[:module,:current].list.values.flatten
+  @forge_name = modules.find{|x| x.name==module_name}.forge_name
+end
+
+def bash_script
+  template = File.open(File.join(Pathname.new(__FILE__).dirname.expand_path.to_s, 'appdirector.erb'))
+  ERB.new(template.read).result(binding)
+end
+
+def generate_script
+  parse_module!
+  result = find(@class_name).collect{|x| {x.name => x.arguments.keys}}.first
+  @puppet_class = Hash.new
+  @puppet_class[:name] = @class_name
+  @puppet_class[:param] = result[@class_name]
+  puts bash_script
+end
+
+def list_classes
+  classes = Puppet::Face[:resource_type,:current].search('*').collect{ |x| x.name if x.type==:hostclass }.compact#.collect{|y| y.name}
+  puts "Available Puppet Classes:"
+  classes.sort.each do |x|
+    puts x
+  end
+  puts "Additional modules can be installed via: puppet module install [module_name]"
+end
+
+parse_options!
+if @args.empty?
+  list_classes
+else
+  generate_script
+end
