@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'pp'
 require 'erb'
 require 'pathname'
 require 'puppet'
@@ -13,11 +12,7 @@ def opts
     opts.separator "Options:"
 
     @options = Hash.new
-    @options[:namespace] = 'puppetlabs'
-    opts.on('-v', '--verbose', 'Enable verbose output.')                            { @options[:verbose]   = true }
     opts.on('-m', '--modulepath', 'Search puppet modulepath.')                      { |val| Puppet[:modulepath] = val }
-#    opts.on('-a', '--analyze', 'Analyze module and provide class and define type.') { @options[:analyze]   = true }
-    opts.on('-n', '--namespace', 'The module user namespace on Forge.')             { |val| @options[:namespace] = val }
   end
 end
 
@@ -44,7 +39,7 @@ end
 
 def bash_script
   template = File.open(File.join(Pathname.new(__FILE__).dirname.expand_path.to_s, 'appdirector.erb'))
-  ERB.new(template.read).result(binding)
+  ERB.new(template.read,nil,'%<>-').result(binding)
 end
 
 def generate_script

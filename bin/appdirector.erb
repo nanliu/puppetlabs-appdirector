@@ -9,10 +9,13 @@ set -e
 
 puppet module install <%= @forge_name %>
 
+# Add any puppet class parameter to appdirector service properties with default value undef.
 cat > /tmp/<%= @class_name.gsub('::','_') %>.pp <<EOF
-class { '<%= @puppet_class[:name] %>':
-<% @puppet_class[:param].each { |p| %> <%= p %> => $<%= p %>,
-<% } %>
+class { '<%= @class_name %>':
+<% @puppet_class[:param].each do |p| -%>
+  <%= p %> => $<%= p %>,
+<% end -%>
 }
 EOF
-puppet apply --verbose /tmp/<%= @class_name.gsub('::','_') %>.pp
+
+puppet apply --verbose --no-color /tmp/<%= @class_name.gsub('::','_') %>.pp
