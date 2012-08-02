@@ -1,4 +1,4 @@
-# Puppet Labs AppDirector Module
+# VMware vFabric Application Director Puppet Service
 
 ![Puppet Labs Logo](http://www.puppetlabs.com/wp-content/uploads/2010/12/Puppet-Labs-Logo-Horizontal-Sm.png)
 
