@@ -4,11 +4,11 @@
 
 ## Overview
 
-Puppet Labs provides an integration solution for [VMware vFabric Application Director](http://www.vmware.com/products/application-platform/vfabric-application-director/overview.html). The Puppet service enables Application Director customers to deploy applications via puppet manifests or deploy Application Director blueprints using existing Puppet modules available on the [Puppet Forge](http://forge.puppetlabs.com/). The solution levarages the Application Director management console to configure Puppet classes and utilize Puppet Forge modules to deploy services and create Application Director blueprints.
+Puppet Labs provides an integration solution for [VMware vFabric Application Director](http://www.vmware.com/products/application-platform/vfabric-application-director/overview.html). The Puppet service enables Application Director customers to deploy applications via Puppet manifests or deploy Application Director blueprints using existing Puppet modules available on the [Puppet Forge](http://forge.puppetlabs.com/). The solution levarages the Application Director management console to configure Puppet classes and utilize Puppet Forge modules to deploy services and create Application Director blueprints.
 
 ## Puppet Modules as Application Director Blueprints
 
-Deploying Puppet modules as blueprints in VMware vFabric Application Director environments consist of the follow steps.
+Deploying Puppet modules as blueprints in VMware vFabric Application Director environments consists of the following steps.
 
 * Install and setup Puppet service.
 * Download and translate Puppet module.
@@ -17,7 +17,7 @@ Deploying Puppet modules as blueprints in VMware vFabric Application Director en
 
 ## Module Installation
 
-The github module only needs to be installed on the Application Director management console. The repo provides some example scripts as well as a translation utility to map Puppet modules to Application Director compatible service scripts.
+The github module only needs to be installed on the Application Director management console. The repo provides some example scripts, as well as a translation utility to map Puppet modules to Application Director compatible service scripts.
 
 Requirements: Puppet Enterprise 2.5.0+ or Ruby 1.8.7 and Puppet Open Source 2.7.14+.
 
@@ -58,7 +58,7 @@ Users have a choice of installing Puppet Enterprise or Puppet as a service in th
 
 ## Puppet Modules
 
-There's more than 400 modules at [Puppet Forge](http://forge.puppetlabs.com/) and they can be used to deploy a wide variety of popular applications. The example below describes the process of deploying mysql module; however, any other module can be used. For complex modules, please visit the [Puppet Forge](http://forge.puppetlabs.com/) for usage examples and documentation.
+There are more than 400 modules in the [Puppet Forge](http://forge.puppetlabs.com/) marketplace, and they can be used to deploy a wide variety of popular applications. The example below describes the process of deploying mysql module; however, any other module can be used. For complex modules, please visit the [Puppet Forge](http://forge.puppetlabs.com/) for usage examples and documentation.
 
 1. Search and install modules
 
