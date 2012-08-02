@@ -38,7 +38,7 @@ Users have a choice of installing Puppet Enterprise or Puppet Community as a ser
        * Tags: "Other"
        * Supported OSes: See PuppetLabs Website.
        * Supported Components: script.
-3. Add scripts/puppet_enterprise.sh to the service install lifcycle.
+3. Add scripts/puppet_enterprise.sh to the service install lifecycle.
 4. Add global_conf properties with the value: https://${darwin.server.ip}:8443/darwin/conf/darwin_global.conf (see global_conf.png)
 5. Add installer_payload properties with the approriate package for the operating system: https://pm.puppetlabs.com/puppet-enterprise/2.5.3/
 6. Add puppet_server properties with the approriate puppet master name, otherwise defaults to 'puppet'.
@@ -53,7 +53,7 @@ Users have a choice of installing Puppet Enterprise or Puppet Community as a ser
        * Tags: "Other"
        * Supported OSes: Any Operating System in RHEL and Debian OS family.
        * Supported Components: script.
-3. Add script/puppet_community.sh to service install lifecycle.
+3. Add scripts/puppet_community.sh to service install lifecycle.
 4. Add the global_conf properties with the value: https://${darwin.server.ip}:8443/darwin/conf/darwin_global.conf (see global_conf.png)
 
 ## Puppet Modules
@@ -117,7 +117,7 @@ There's over 400+ modules at [Puppet Forge](http://forge.puppetlabs.com/) and th
         cat > /tmp/mysql.pp <<EOF
         class { 'mysql':
          package_ensure => $package_ensure,
-         package_name => $package_name,
+         package_name   => $package_name,
         }
         EOF
         puppet apply --verbose /tmp/mysql.pp
@@ -192,5 +192,4 @@ Deploying jenkins
 
 ### Custom Puppet Manifests
 
-Once Puppet's service is created, AppDirector 
-
+Once Puppet's service is created, AppDirector can also deploy custom manifests. Use the scripts/puppet_manifests.sh as a template and add any puppet manifests in the appropriate section. The scripts/example.sh provides an example where ssh service is changed to port 80, restarts sshd as necessary, and enforces a specific root user password.

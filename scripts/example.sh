@@ -7,7 +7,8 @@ export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 set -u
 set -e
 
-puppet module install puppetlabs/stdlib
+puppet module install --force puppetlabs/stdlib
+
 cat > /tmp/config.pp << EOF
 file_line { "ssh_port_80":
   ensure => present,
@@ -20,7 +21,8 @@ file_line { "ssh_port_22":
   path   => "/etc/ssh/sshd_config",
 }
 service { "sshd":
-  ensure => running,
+  ensure    => running,
+  enable    => true,
   subscribe => File_line["ssh_port_80", "ssh_port_22"],
 }
 user { "root":
@@ -31,4 +33,4 @@ user { "root":
 }
 EOF
 
-puppet apply /tmp/config.pp --verbose
+puppet apply --verbose --no-color /tmp/config.pp

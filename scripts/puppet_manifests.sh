@@ -13,4 +13,4 @@ cat > /tmp/manifests.pp << EOF
 
 EOF
 
-puppet apply /tmp/manifests.pp --verbose
+puppet apply --verbose --no-color /tmp/manifests.pp
