@@ -1,4 +1,4 @@
-# VMware vFabric™ Application Director Puppet Service
+# VMware vFabric Application Director™ Puppet Service
 
 ![Puppet Labs Logo](http://www.puppetlabs.com/wp-content/uploads/2010/12/Puppet-Labs-Logo-Horizontal-Sm.png)
 
@@ -17,9 +17,12 @@ Deploying Puppet modules as blueprints in VMware vFabric Application Director en
 
 ## Module Installation
 
-The github module only needs to be installed on the Application Director management console. The repo provides some example scripts, as well as a translation utility to map Puppet modules to Application Director compatible service scripts.
+The github module only needs to be installed on the client accessing the Application Director management console. The github repo provides example scripts, as well as a translation utility to map Puppet modules to Application Director compatible service scripts.
 
-Requirements: Puppet Enterprise 2.5.0+ or Ruby 1.8.7 and Puppet Open Source 2.7.14+.
+Requirements:
+
+* Puppet Enterprise 2.5.0+
+* or Ruby 1.8.7 and Puppet opensource 2.7.14+.
 
 Installation:
 
