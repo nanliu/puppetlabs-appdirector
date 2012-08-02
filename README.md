@@ -1,10 +1,10 @@
-# VMware vFabric Application Director Puppet Service
+# VMware vFabric™ Application Director Puppet Service
 
 ![Puppet Labs Logo](http://www.puppetlabs.com/wp-content/uploads/2010/12/Puppet-Labs-Logo-Horizontal-Sm.png)
 
 ## Overview
 
-Puppet Labs provides an integration solution for [VMware vFabric™ Application Director](http://www.vmware.com/products/application-platform/vfabric-application-director/overview.html). The Puppet service enables Application Director customers to deploy applications via puppet manifests or deploy Application Director blueprints using existing Puppet modules available on the [Puppet Forge](http://forge.puppetlabs.com/). The solution levarages the Application Director management console to configure Puppet classes and utilize Puppet Forge modules to deploy services and create Application Director blueprints.
+Puppet Labs provides an integration solution for [VMware vFabric Application Director](http://www.vmware.com/products/application-platform/vfabric-application-director/overview.html). The Puppet service enables Application Director customers to deploy applications via puppet manifests or deploy Application Director blueprints using existing Puppet modules available on the [Puppet Forge](http://forge.puppetlabs.com/). The solution levarages the Application Director management console to configure Puppet classes and utilize Puppet Forge modules to deploy services and create Application Director blueprints.
 
 ## Puppet Modules as Application Director Blueprints
 
