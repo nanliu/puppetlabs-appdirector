@@ -4,20 +4,20 @@
 
 ## Overview
 
-Puppet Labs AppDirector module provides an integration solution for [VMware vFabric Application Director](http://www.vmware.com/products/application-platform/vfabric-application-director/overview.html). The Puppet service enables AppDirector customers to deploy applications via puppet manifests or deploy AppDirector blueprints using existing puppet module available on [Puppet Forge](http://forge.puppetlabs.com/). The solution levarages AppDirector management console to configure Puppet classes and utilize forge modules to deploy services and create AppDirector blueprints.
+Puppet Labs provides an integration solution for [VMware vFabric Application Director](http://www.vmware.com/products/application-platform/vfabric-application-director/overview.html). The Puppet service enables Application Director customers to deploy applications via puppet manifests or deploy Application Director blueprints using existing Puppet modules available on the [Puppet Forge](http://forge.puppetlabs.com/). The solution levarages the Application Director management console to configure Puppet classes and utilize Puppet Forge modules to deploy services and create Application Director blueprints.
 
 ## Puppet Modules as Application Director Blueprints
 
-Deploying Puppet modules as blueprints in VMware Application Director environments consist of the follow steps.
+Deploying Puppet modules as blueprints in VMware vFabric Application Director environments consist of the follow steps.
 
-* install and setup Puppet service.
-* download and translate Puppet module.
-* install and setup aapplication service.
-* configure and deploy application blueprint.
+* Install and setup Puppet service.
+* Download and translate Puppet module.
+* Install and setup application service.
+* Configure and deploy application blueprint.
 
 ## Module Installation
 
-The github module only needs to be installed on the AppDirector management console. The repo provides some example scripts as well as a translation utility to map puppet modules to AppDirector compatiable service scripts.
+The github module only needs to be installed on the Application Director management console. The repo provides some example scripts as well as a translation utility to map Puppet modules to Application Director compatible service scripts.
 
 Requirements: Puppet Enterprise 2.5.0+ or Ruby 1.8.7 and Puppet Open Source 2.7.14+.
 
@@ -27,7 +27,7 @@ Installation:
 
 ## Puppet Service
 
-Users have a choice of installing Puppet Enterprise or Puppet Community as a service in AppDirector Environment. Both installation scripts only deploy puppet agent.
+Users have a choice of installing Puppet Enterprise or Puppet Community as a service in the Application Director environment. Both installation scripts only deploy puppet agent.
 
 ### Puppet Enterprise
 
@@ -58,7 +58,7 @@ Users have a choice of installing Puppet Enterprise or Puppet Community as a ser
 
 ## Puppet Modules
 
-There's over 400+ modules at [Puppet Forge](http://forge.puppetlabs.com/) and they can be used to deploy a wide variety of applications. The example below describes the process of deploying mysql module, however any other module can be used. For complex modules please visit the forge website for usage examples and documentation.
+There's more than 400 modules at [Puppet Forge](http://forge.puppetlabs.com/) and they can be used to deploy a wide variety of popular applications. The example below describes the process of deploying mysql module; however, any other module can be used. For complex modules, please visit the [Puppet Forge](http://forge.puppetlabs.com/) for usage examples and documentation.
 
 1. Search and install modules
 
@@ -132,7 +132,7 @@ There's over 400+ modules at [Puppet Forge](http://forge.puppetlabs.com/) and th
 11. Create dependency between MySQL and Puppet service.
 12. Deploy application.
 
-One of the benefits of deploying Puppet in AppDirector environment, is Puppet's ability to manage resources. For example, once the mysql module is deployed, AppDirector users can descrie and deploy mysql databases using the following puppet manifest:
+One of the benefits of deploying Puppet in Application Director environment, is Puppet's ability to manage resources. For example, once the mysql module is deployed, Application Director users can describe and deploy mysql databases using the following puppet manifest:
 
     mysql::db { 'mydb':
       user     => 'myuser',
@@ -143,7 +143,7 @@ One of the benefits of deploying Puppet in AppDirector environment, is Puppet's 
 
 ## Examples
 
-In the sections below, we will provide step by step instructions for deploying Jenkins, and a custom Puppet manifest.
+In the sections below, we will provide step-by-step instructions for deploying Jenkins, and a custom Puppet manifest.
 
 ### Deploying Jenkins
 
@@ -192,4 +192,4 @@ Deploying jenkins
 
 ### Custom Puppet Manifests
 
-Once Puppet's service is created, AppDirector can also deploy custom manifests. Use the scripts/puppet_manifests.sh as a template and add any puppet manifests in the appropriate section. The scripts/example.sh provides an example where ssh service is changed to port 80, restarts sshd as necessary, and enforces a specific root user password.
+Once Puppet's service is created, Application Director can also deploy custom manifests. Use the scripts/puppet_manifests.sh as a template and add any puppet manifests in the appropriate section. The scripts/example.sh provides an example where ssh service is changed to port 80, restarts sshd as necessary, and enforces a specific root user password.
