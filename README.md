@@ -27,7 +27,7 @@ Installation:
 
 ## Puppet Service
 
-Users have a choice of installing Puppet Enterprise or Puppet Community as a service in the Application Director environment. Both installation scripts only deploy puppet agent.
+Users have a choice of installing Puppet Enterprise or Puppet as a service in the Application Director environment. Both installation scripts only deploy puppet agent.
 
 ### Puppet Enterprise
 
@@ -44,7 +44,7 @@ Users have a choice of installing Puppet Enterprise or Puppet Community as a ser
 6. Add puppet_server properties with the approriate puppet master name, otherwise defaults to 'puppet'.
 7. Add agent_cert properties with the systems certificate name, otherwise defaults to the hostname.
 
-### Puppet Community
+### Puppet
 
 1. Create new service in the catalog.
 2. Use the following values:
