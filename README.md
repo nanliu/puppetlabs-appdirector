@@ -41,6 +41,33 @@ Users have a choice of installing Puppet Community or Puppet Enterprise as a ser
 3. Add script/puppet_community.sh to service install lifecycle.
 4. Add the global_conf properties with the value: https://${darwin.server.ip}:8443/darwin/conf/darwin_global.conf (see global_conf.png)
 
+### Puppet Enterprise
+
+1. Create new service in the catalog.
+2. Use the following values:
+       * Name: PuppetEnterprise
+       * Version: 2.5.3
+       * Tags: "Other"
+       * Supported OSes: See PuppetLabs Website.
+       * Supported Components: script.
+3. Add scripts/puppet_enterprise.sh to the service install lifcycle.
+4. Add global_conf properties with the value: https://${darwin.server.ip}:8443/darwin/conf/darwin_global.conf (see global_conf.png)
+5. Add installer_payload properties with the approriate URL link: https://pm.puppetlabs.com/puppet-enterprise/2.5.3/
+5. Add puppet_server properties with the approriate puppet master name.
+
+Example Puppet Agent answer file:
+
+    q_fail_on_unsuccessful_master_lookup=y
+    q_install=y
+    q_puppet_cloud_install=n
+    q_puppet_enterpriseconsole_install=n
+    q_puppet_symlinks_install=y
+    q_puppetagent_install=y
+    q_puppetagent_server=puppet
+    q_puppetca_install=n
+    q_puppetmaster_install=n
+    q_vendor_packages_install=y
+
 ## Puppet Modules
 
 There's over 400+ modules at [Puppet Forge](http://forge.puppetlabs.com/) and they can be used to deploy a wide variety of applications. The example below describes the process of deploying mysql module, however any other module can be used. For complex modules please visit the forge website for usage examples and documentation.
