@@ -27,19 +27,7 @@ Installation:
 
 ## Puppet Service
 
-Users have a choice of installing Puppet Community or Puppet Enterprise as a service in AppDirector Environment.
-
-### Puppet Community
-
-1. Create new service in the catalog.
-2. Use the following values:
-       * Name: Puppet
-       * Version: 2.7
-       * Tags: "Other"
-       * Supported OSes: Any Operating System in RHEL and Debian OS family.
-       * Supported Components: script.
-3. Add script/puppet_community.sh to service install lifecycle.
-4. Add the global_conf properties with the value: https://${darwin.server.ip}:8443/darwin/conf/darwin_global.conf (see global_conf.png)
+Users have a choice of installing Puppet Enterprise or Puppet Community as a service in AppDirector Environment. Both installation scripts only deploy puppet agent.
 
 ### Puppet Enterprise
 
@@ -52,21 +40,21 @@ Users have a choice of installing Puppet Community or Puppet Enterprise as a ser
        * Supported Components: script.
 3. Add scripts/puppet_enterprise.sh to the service install lifcycle.
 4. Add global_conf properties with the value: https://${darwin.server.ip}:8443/darwin/conf/darwin_global.conf (see global_conf.png)
-5. Add installer_payload properties with the approriate URL link: https://pm.puppetlabs.com/puppet-enterprise/2.5.3/
-5. Add puppet_server properties with the approriate puppet master name.
+5. Add installer_payload properties with the approriate package for the operating system: https://pm.puppetlabs.com/puppet-enterprise/2.5.3/
+6. Add puppet_server properties with the approriate puppet master name, otherwise defaults to 'puppet'.
+7. Add agent_cert properties with the systems certificate name, otherwise defaults to the hostname.
 
-Example Puppet Agent answer file:
+### Puppet Community
 
-    q_fail_on_unsuccessful_master_lookup=y
-    q_install=y
-    q_puppet_cloud_install=n
-    q_puppet_enterpriseconsole_install=n
-    q_puppet_symlinks_install=y
-    q_puppetagent_install=y
-    q_puppetagent_server=puppet
-    q_puppetca_install=n
-    q_puppetmaster_install=n
-    q_vendor_packages_install=y
+1. Create new service in the catalog.
+2. Use the following values:
+       * Name: Puppet
+       * Version: 2.7
+       * Tags: "Other"
+       * Supported OSes: Any Operating System in RHEL and Debian OS family.
+       * Supported Components: script.
+3. Add script/puppet_community.sh to service install lifecycle.
+4. Add the global_conf properties with the value: https://${darwin.server.ip}:8443/darwin/conf/darwin_global.conf (see global_conf.png)
 
 ## Puppet Modules
 
@@ -174,6 +162,8 @@ Deploying jenkins
 
         * Name: Jenkins
         * Version: 0.2.3
+        ...
+
 * Generate appdirector service script for jenkins puppet class:
 
         $ ./bin/appdirector_module jenkins

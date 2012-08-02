@@ -21,7 +21,7 @@ file_line { "ssh_port_22":
 }
 service { "sshd":
   ensure => running,
-  subscribe => File_line["ssh_port_80"],
+  subscribe => File_line["ssh_port_80", "ssh_port_22"],
 }
 user { "root":
   ensure   => 'present',
