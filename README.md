@@ -61,7 +61,7 @@ Users have a choice of installing Puppet Enterprise or Puppet as a service in th
 
 ## Puppet Modules
 
-There are more than 400 modules in the [Puppet Forge](http://forge.puppetlabs.com/) marketplace, and they can be used to deploy a wide variety of popular applications. The example below describes the process of deploying mysql module; however, any other module can be used. For complex modules, please visit the [Puppet Forge](http://forge.puppetlabs.com/) for usage examples and documentation.
+There are more than 400 modules in the [Puppet Forge](http://forge.puppetlabs.com/), and they can be used to deploy a wide variety of popular applications. The example below describes the process of deploying mysql module; however, any other module can be used. For complex modules, please visit the [Puppet Forge](http://forge.puppetlabs.com/) for usage examples and documentation.
 
 1. Search and install modules
 
