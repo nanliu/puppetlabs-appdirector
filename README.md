@@ -1,6 +1,6 @@
 # VMware vFabric Application Director™ Puppet Service
 
-![Puppet Labs Logo](http://www.puppetlabs.com/wp-content/uploads/2010/12/Puppet-Labs-Logo-Horizontal-Sm.png)
+![Puppet Labs Logo](http://www.puppetlabs.com/wp-content/uploads/2010/12/PL_logo_horizontal_RGB_sm.png)
 
 ## Overview
 
