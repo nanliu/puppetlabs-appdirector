@@ -4,9 +4,9 @@
 
 ## Overview
 
-Puppet Labs provides an integration solution for [VMware® vFabric™ Application Director™](http://www.vmware.com/products/application-platform/vfabric-application-director/overview.html). The Puppet service enables Application Director customers to deploy applications via Puppet manifests or deploy vFabric Application Director blueprints using existing Puppet modules available on the [Puppet Forge](http://forge.puppetlabs.com/). The solution levarages the Application Director management console to configure Puppet classes and utilize Puppet Forge modules to deploy services and create vFabric Application Director blueprints.
+Puppet Labs provides an integration solution for [VMware® vFabric™ Application Director™](http://www.vmware.com/products/application-platform/vfabric-application-director/overview.html). The Puppet service enables Application Director customers to deploy applications via Puppet manifests or deploy vFabric Application Director blueprints using existing Puppet modules available on the [Puppet Forge](http://forge.puppetlabs.com/). The solution leverages the vFabric Application Director management console to configure Puppet classes and utilize Puppet Forge modules to deploy services and create vFabric Application Director blueprints.
 
-## Puppet Modules as Application Director Blueprints
+## Puppet Modules as vFabric Application Director Blueprints
 
 Deploying Puppet modules as blueprints in vFabric Application Director environments consists of the following steps:
 
@@ -17,12 +17,12 @@ Deploying Puppet modules as blueprints in vFabric Application Director environme
 
 ## Module Installation
 
-The githumodule only needs to be installed on the client accessing the vFabric Application Director management console. The github repo provides example scripts, as well as a translation utility to map Puppet modules to Application Director compatible service scripts.
+The (github repo)[https://github.com/puppetlabs/puppetlabs-appdirector.git] needs to be installed on the client accessing the vFabric Application Director management console. The repo provides example scripts, as well as a translation utility to map Puppet modules to vFabric Application Director compatible service scripts.
 
 Requirements:
 
 * Puppet Enterprise 2.5.0+
-* or Ruby 1.8.7 and Puppet opensource 2.7.14+.
+* or Ruby 1.8.7 and Puppet open source 2.7.14+.
 
 Installation:
 
@@ -30,16 +30,16 @@ Installation:
 
 ## Puppet Service
 
-Users have a choice of installing Puppet Enterprise or Puppet as a service in the Application Director environment. Both installation scripts only deploy puppet agent.
+Users have a choice of installing Puppet Enterprise or Puppet as a service in the vFabric Application Director environment. Both installation scripts only deploy puppet agent.
 
 ### Puppet Enterprise
 
 1. Create new service in the catalog.
 2. Use the following values:
-       * Name: PuppetEnterprise
+       * Name: Puppet Enterprise
        * Version: 2.5.3
        * Tags: "Other"
-       * Supported OSes: See PuppetLabs Website.
+       * Supported OSes: (Click here to see the full list.)[http://puppetlabs.com/puppet/requirements/] 
        * Supported Components: script.
 3. Add scripts/puppet_enterprise.sh to the service install lifecycle.
 4. Add global_conf properties with the value: https://${darwin.server.ip}:8443/darwin/conf/darwin_global.conf (see global_conf.png)
@@ -61,7 +61,7 @@ Users have a choice of installing Puppet Enterprise or Puppet as a service in th
 
 ## Puppet Modules
 
-There are more than 400 modules in the [Puppet Forge](http://forge.puppetlabs.com/), and they can be used to deploy a wide variety of popular applications. The example below describes the process of deploying mysql module; however, any other module can be used. For complex modules, please visit the [Puppet Forge](http://forge.puppetlabs.com/) for usage examples and documentation.
+There are more than 400 modules in the [Puppet Forge](http://forge.puppetlabs.com/), and they can be used to deploy a wide variety of popular applications. The example below describes the process of deploying MySql module; however, any other module can be used. For complex modules, please visit the [Puppet Forge](http://forge.puppetlabs.com/) for usage examples and documentation.
 
 1. Search and install modules
 
@@ -81,13 +81,13 @@ There are more than 400 modules in the [Puppet Forge](http://forge.puppetlabs.co
         └── puppetlabs-mysql (v0.4.0)
 
 2. Create a new service in the catalog.
-3. Use the puppet module name and version for the new service (see module documentation for OS support).
+3. Use the Puppet module name and version for the new service (see module documentation for OS support).
 
         * Name: MySQL
         * Version: 0.4.0
         ...
 
-4. List available puppet classes:
+4. List available Puppet classes:
 
         $ ./bin/appdirector_module.rb
         Available Puppet Classes:
@@ -103,7 +103,7 @@ There are more than 400 modules in the [Puppet Forge](http://forge.puppetlabs.co
         mysql::server::monitor
         mysql::server::mysqltuner
 
-5. Generate appdirector service script for mysql puppet class:
+5. Generate appdirector service script for MySql Puppet class:
 
         $ ./bin/appdirector_module mysql
         #!/bin/bash
@@ -125,7 +125,7 @@ There are more than 400 modules in the [Puppet Forge](http://forge.puppetlabs.co
         EOF
         puppet apply --verbose /tmp/mysql.pp
 
-6. Add any puppet class parameters as properties with the type string and default value of undef (do not quote).
+6. Add any Puppet class parameters as properties with the type string and default value of undef (do not quote).
       * name: package_ensure, type: string, default: undef
       * name: package_name, type: string, default: undef
 7. Add the global_conf properties with the value: https://${darwin.server.ip}:8443/darwin/conf/darwin_global.conf (see global_conf.png)
@@ -135,7 +135,7 @@ There are more than 400 modules in the [Puppet Forge](http://forge.puppetlabs.co
 11. Create dependency between MySQL and Puppet service.
 12. Deploy application.
 
-One of the benefits of deploying Puppet in Application Director environment, is Puppet's ability to manage resources. For example, once the mysql module is deployed, Application Director users can describe and deploy mysql databases using the following puppet manifest:
+One of the benefits of deploying Puppet in vFabric Application Director environment is Puppet's ability to manage resources. For example, once the MySql module is deployed, vFabric Application Director users can describe and deploy MySql databases using the following Puppet manifest:
 
     mysql::db { 'mydb':
       user     => 'myuser',
@@ -149,8 +149,6 @@ One of the benefits of deploying Puppet in Application Director environment, is 
 In the sections below, we will provide step-by-step instructions for deploying Jenkins, and a custom Puppet manifest.
 
 ### Deploying Jenkins
-
-Deploying jenkins
 
 * Install rtyler/jenkins module from forge:
 
@@ -195,4 +193,4 @@ Deploying jenkins
 
 ### Custom Puppet Manifests
 
-Once Puppet's service is created, Application Director can also deploy custom manifests. Use the scripts/puppet_manifests.sh as a template and add any puppet manifests in the appropriate section. The scripts/example.sh provides an example where ssh service is changed to port 80, restarts sshd as necessary, and enforces a specific root user password.
+Once Puppet's service is created, vFabric Application Director can also deploy custom manifests. Use the scripts/puppet_manifests.sh as a template and add any puppet manifests in the appropriate section. The scripts/example.sh provides an example where ssh service is changed to port 80, restarts sshd as necessary, and enforces a specific root user password.
