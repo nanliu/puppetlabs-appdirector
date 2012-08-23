@@ -4,11 +4,11 @@
 
 ## Overview
 
-Puppet Labs provides an integration solution for [VMware vFabric Application Director](http://www.vmware.com/products/application-platform/vfabric-application-director/overview.html). The Puppet service enables Application Director customers to deploy applications via Puppet manifests or deploy Application Director blueprints using existing Puppet modules available on the [Puppet Forge](http://forge.puppetlabs.com/). The solution levarages the Application Director management console to configure Puppet classes and utilize Puppet Forge modules to deploy services and create Application Director blueprints.
+Puppet Labs provides an integration solution for [VMware® vFabric™ Application Director™](http://www.vmware.com/products/application-platform/vfabric-application-director/overview.html). The Puppet service enables Application Director customers to deploy applications via Puppet manifests or deploy vFabric Application Director blueprints using existing Puppet modules available on the [Puppet Forge](http://forge.puppetlabs.com/). The solution levarages the Application Director management console to configure Puppet classes and utilize Puppet Forge modules to deploy services and create vFabric Application Director blueprints.
 
 ## Puppet Modules as Application Director Blueprints
 
-Deploying Puppet modules as blueprints in VMware vFabric Application Director environments consists of the following steps.
+Deploying Puppet modules as blueprints in vFabric Application Director environments consists of the following steps:
 
 * Install and setup Puppet service.
 * Download and translate Puppet module.
@@ -17,7 +17,7 @@ Deploying Puppet modules as blueprints in VMware vFabric Application Director en
 
 ## Module Installation
 
-The github module only needs to be installed on the client accessing the Application Director management console. The github repo provides example scripts, as well as a translation utility to map Puppet modules to Application Director compatible service scripts.
+The githumodule only needs to be installed on the client accessing the vFabric Application Director management console. The github repo provides example scripts, as well as a translation utility to map Puppet modules to Application Director compatible service scripts.
 
 Requirements:
 
