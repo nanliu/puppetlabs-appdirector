@@ -1,0 +1,8 @@
+name 'puppetlabs-appdirector'
+version '0.0.1'
+source 'git://github.com/puppetlabs/puppetlabs-appdirector.git'
+author 'puppetlabs'
+license 'Apache 2.0'
+summary 'Puppet AppDirector'
+description 'AppDirector translation tool'
+project_page 'https://github.com/puppetlabs/puppetlabs-appdirector'
