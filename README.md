@@ -89,7 +89,7 @@ There are more than 400 modules in the [Puppet Forge](http://forge.puppetlabs.co
 
 4. List available Puppet classes:
 
-        $ ./bin/appdirector_module.rb
+        $ puppet application_director list
         Available Puppet Classes:
         mysql
         mysql::backup
@@ -105,7 +105,7 @@ There are more than 400 modules in the [Puppet Forge](http://forge.puppetlabs.co
 
 5. Generate appdirector service script for MySql Puppet class:
 
-        $ ./bin/appdirector_module mysql
+        $ puppet application_director generate mysql
         #!/bin/bash
         
         . $global_conf
@@ -167,7 +167,7 @@ In the sections below, we will provide step-by-step instructions for deploying J
 
 * Generate appdirector service script for jenkins puppet class:
 
-        $ ./bin/appdirector_module jenkins
+        $ puppet application_director generate jenkins
         #!/bin/bash
         
         . $global_conf

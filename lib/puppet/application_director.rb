@@ -1,5 +1,4 @@
 require 'erb'
-require 'pathname'
 
 module Puppet
   class ApplicationDirector
@@ -52,7 +51,6 @@ class { '<%= class_name %>':
 EOF
 
 puppet apply --verbose --no-color /tmp/<%= class_name.gsub('::','_') %>.pp
-
       EOT
       puts template.result(binding)
     end
